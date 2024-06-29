@@ -1,0 +1,76 @@
+
+.neumorphic {
+    background: #c5ac87; /* Light cream */
+    box-shadow: 10px 10px 30px #E7F0DC, -10px -10px 30px #E7F0DC;
+    padding: 20px;
+    overflow-y: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Added transition for animation */
+    transform: translateX(0); /* Initially visible */
+    opacity: 1; /* Initially fully visible */
+}
+
+.neumorphic.hidden {
+    transform: translateX(-100%); /* Slide out to the left */
+    opacity: 0; /* Fade out */
+}
+
+.neumorphic-item {
+    background: #E7F0DC; /* Light peach */
+    border-radius: 10px;
+    box-shadow: outset 5px 5px 10px #eeedec, inset -5px -5px 10px #fffdfd;
+    padding: 15px;
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.neumorphic-item:hover {
+    box-shadow: 5px 5px 15px #e7e7e7, -5px -5px 15px #fdfffb; /* Darker peach on hover */
+}
+
+/* Only hide text, keep icons visible */
+.neumorphic-item .sidebar-icon {
+    margin-right: 10px; /* Adjust icon margin */
+}
+
+.neumorphic-item .sidebar-text {
+    display: block;
+}
+
+.neumorphic-item.hidden .sidebar-text {
+    display: none;
+}
+
+/* Custom scrollbar styling for the sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(12, 109, 8, 0.5);
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background-color: rgba(12, 109, 8, 0.5);
+}
+
+/* Ensuring consistent icon sizing */
+.sidebar-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Additional CSS for hamburger menu */
+#sidebarToggle {
+    position: fixed;
+    top: 1rem;
+    left: 0.75rem; /* Adjusted position to be between sidebar and main content */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's above other content */
+    transition: left 0.3s ease; /* Added transition for animation */
+}
+
+.ml-0 #sidebarToggle {
+    left: 16rem; /* Adjusted position when sidebar is hidden */
+}

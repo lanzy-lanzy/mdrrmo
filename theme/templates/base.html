@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="retro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDRRMO Inventory System</title>
+
+    <!-- Load Tailwind CSS -->
+    {% load static tailwind_tags %}
+    {% tailwind_css %}
+    {% load static %}
+
+    <!-- Load FontAwesome for icons -->
+
+          <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+          <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+          <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css"> 
+          <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Load Neumorphic CSS -->
+    <link rel="stylesheet" href="{% static 'css/neumorphic.css' %}" />
+    
+</head>
+
+<body class="bg-green-600-100 font-sans antialiased flex">
+  <!-- Sidebar -->
+<aside id="sidebar" class="sidebar neumorphic w-64 h-screen fixed text-gray-800 flex flex-col p-4">
+    <div class="flex items-center space-x-3 px-4 py-6">
+        <i class="fas fa-fas fa-tachometer-alt text-2xl"></i>
+        <span class="text-2xl font-bold">Dashboard</span>
+    </div>
+    <nav class="flex-1 overflow-y-auto space-y-4">
+        <ul class="space-y-4 p-2">
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-tachometer-alt sidebar-icon"></i><span class="sidebar-text">Overview</span></a></li>
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-box-open sidebar-icon"></i><span class="sidebar-text">Inventory</span></a></li>
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-truck sidebar-icon"></i><span class="sidebar-text">Vehicles</span></a></li>
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-shopping-cart sidebar-icon"></i><span class="sidebar-text">Purchase Requests</span></a></li>
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-tools sidebar-icon"></i><span class="sidebar-text">Maintenance</span></a></li>
+            <li><a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-cogs sidebar-icon"></i><span class="sidebar-text">Settings</span></a></li>
+        </ul>
+    </nav>
+    <div class="px-4 py-4">
+        <a href="#" class="neumorphic-item flex items-center space-x-3 hover:bg-gray-300 rounded-md"><i class="fas fa-sign-out-alt sidebar-icon"></i><span class="sidebar-text">Logout</span></a>
+    </div>
+</aside>
+
+<!-- Hamburger Menu Icon -->
+<div id="sidebarToggle">
+    <i class="fas fa-bars text-2xl "></i>
+</div>
+
+<!-- Main Content -->
+<div id="mainContent" class="flex-1 ml-64 transition-all duration-300 ease-in-out opacity-100">
+    <!-- Top Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-gray-800">MDRRMO Inventory System</div>
+            <nav class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800">Profile</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800">Notifications</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800">Help</a>
+            </nav>
+        </div>
+    </header>
+{% block content %}
+    <!-- Dashboard Content -->
+    <main class="p-6">
+        <!-- Dashboard Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4">
+                <i class="fas fa-boxes text-blue-500 text-4xl"></i>
+                <div>
+                    <p class="text-gray-600 font-bold">Total Inventory</p>
+                    <p class="text-2xl font-bold">1234</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4">
+                <i class="fas fa-truck text-green-500 text-4xl"></i>
+                <div>
+                    <p class="text-gray-600 font-bold">Vehicles</p>
+                    <p class="text-2xl font-bold">56</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4">
+                <i class="fas fa-shopping-cart text-red-500 text-4xl"></i>
+                <div>
+                    <p class="text-gray-600 font-bold">Pending Requests</p>
+                    <p class="text-2xl font-bold">23</p>
+                </div>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-4 flex items-center space-x-4">
+                <i class="fas fa-tools text-yellow-500 text-4xl"></i>
+                <div>
+                    <p class="text-gray-600 font-bold">Maintenance Due</p>
+                    <p class="text-2xl font-bold">9</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="mt-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Activities</h2>
+            <div class="overflow-x-auto">
+                <table class="table w-full">
+                    <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Delivered parts to warehouse</td>
+                            <td>2024-06-25</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>Maintenance for vehicle ABC123</td>
+                            <td>2024-06-24</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>Requested new parts from supplier</td>
+                            <td>2024-06-23</td>
+                            <td><span class="badge badge-info">In Progress</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %} 
+<!-- JavaScript for theme switching and sidebar toggle -->
+<script>
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        sidebarToggle.addEventListener('click', function () {
+            sidebar.classList.toggle('hidden'); // Toggle the 'hidden' class to show/hide sidebar
+            mainContent.classList.toggle('ml-64'); // Adjust main content margin based on sidebar visibility
+            mainContent.classList.toggle('opacity-100'); // Ensure main content opacity is reset when sidebar is shown
+            sidebarToggle.classList.toggle('ml-0'); // Adjust hamburger menu position
+
+            // Toggle the 'hidden' class on each sidebar item to show/hide text
+            const sidebarItems = document.querySelectorAll('.neumorphic-item');
+            sidebarItems.forEach(item => {
+                item.classList.toggle('hidden');
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
